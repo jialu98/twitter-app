@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Show Tweets</title>
+    <style>
+        table {   
+          width: 100%;
+        }
+        th {
+          border: 1px solid; 
+          font-weight: bold;  
+          padding: 10px;
+          text-align: center;
+        }
+        td { 
+          padding: 10px;
+          text-align: left;
+        }
+      </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $("button").click(function(){
+            var userName = $("#user").val();
+            $.getJSON("/tweets/" ,{user:userName}, function(data, textStatus, jqXHR){
+              for (let tweet of data.tweets) {
+                let row = $('<tr/>').append(
+                    $('<td>').text(tweet.text),
+                    $('<td>').text(tweet.timestamp)
+                );
+                $("#tweets").append(row);
+              }
+            });
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Display the tweets for user</h1>
+    <input type="text" name="user" id="user">
+    <button>get tweets</button>
+    <p></p>
+    <br>
+    <table id= "tweets">
+        <tr>
+            <th>Tweet</th>
+            <th>Timestamp</th> 
+        </tr>
+    </table>
+  </body>
+</html>
