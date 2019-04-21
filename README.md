@@ -33,6 +33,7 @@
        ```$GOPATH/src/github.com/jialu98/twitter-app/cmd/app> app.exe```
 
     - test
+    
     In browser, go to http://localhost:8080/static/
     Test with user 'BillGates', and click on the "get tweets" button, the latest 10 tweets will be displayed.
 
