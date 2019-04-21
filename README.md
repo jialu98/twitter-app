@@ -38,12 +38,16 @@
 
 2. Design
   - Project layout.
+  ```
      twitter-app
               |--cmd
               |--pkg
               |--web
+   ```
      The cmd folder contains the main function. The pkg folder is for shared library. The service to get the tweets is in this folder. The web folder contains web related code such as web server, handler, route etc.
   - The TweetService.
+  
       The logic to get tweets from twitter for a given user is implemented in twitter-app/pkg/twitter/twitter.go. The twitter library github.com/dghubble/go-twitter is used. The TweetService implements a single method interface TweetGetter. This approach makes it easy to change the implementation, for example, using a different twitter library, without impact on the consumer of the service.
-  - The tweet web handler. 
+  - The tweet web handler.
+  
          The logic to serve the request to get the tweets for given user is implemented in this handler. The TweetService is injected into this handler by using the single method interface TweetGetter, which makes it easy to mock the TweetService in test. This handler serves the json message instead of html using server site template, which separates the backend from the front end. We can choose appropriate front end technology to implement single page app, and offers better performance during the high load.
