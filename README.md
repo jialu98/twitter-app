@@ -34,17 +34,16 @@
 
     - test
     
-    In browser, go to http://localhost:8080/static/
-    Test with user 'BillGates', and click on the "get tweets" button, the latest 10 tweets will be displayed.
+    In browser, go to http://localhost:8080/static/, and test with user 'BillGates', and click on the "get tweets" button, the latest 10 tweets will be displayed.
 
 2. Design
   - Project layout.
-  ```
-     twitter-app
-              |--cmd
-              |--pkg
-              |--web
-   ```
+      ```
+      twitter-app
+              |-cmd
+              |-pkg
+              |-web
+      ```
      The cmd folder contains the main function. The pkg folder is for shared library. The service to get the tweets is in this folder. The web folder contains web related code such as web server, handler, route etc.
   - The TweetService.
   
